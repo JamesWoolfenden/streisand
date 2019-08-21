@@ -1,4 +1,6 @@
-![Streisand Logo](https://raw.githubusercontent.com/jlund/streisand/master/logo.jpg "Automate the effect")
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jlund/streisand/master/logo.jpg" alt="Automate the effect"/>
+</p>
 
 - - -
 [English](README.md), [Français](README-fr.md), [简体中文](README-chs.md), [Русский](README-ru.md) | [Mirror](https://gitlab.com/alimakki/streisand)
@@ -40,8 +42,6 @@ Streisand介绍
 提供的服务
 -----------------
 
-* [Monit](https://mmonit.com/monit/)
-  * 能够监视、处理运行状态，针对那些奔溃的进程或者没有响应的进程进行自动重启和维护。
 * [OpenSSH](https://www.openssh.com/)
   * 支持 Windows 和 Android 的 SSH 隧道， 并且需要使用 PuTTY 将默认的密钥对导出成 .ppk 的格式；
   * [Tinyproxy](https://banu.com/tinyproxy/) 默认安装并绑定到主机，它作为一个 http(s) 代理提供给那些原生不支持 SOCKS 代理的软件通过 SSH 隧道访问网络，比如说 Android 上的鸟嘀咕。
@@ -141,7 +141,7 @@ Streisand 运行在**你自己的计算机上时（或者你电脑的虚拟机�
         sudo pip install "apache-libcloud>=1.17.0"
   * Linode
 
-        sudo pip install linode-python
+        sudo pip install linode-api4
   * Rackspace 云
 
         sudo pip install pyrax

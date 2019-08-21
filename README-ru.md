@@ -1,4 +1,6 @@
-![Streisand Logo](https://raw.githubusercontent.com/jlund/streisand/master/logo.jpg "Автоматизируйте эффект Стрейзанд!")
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jlund/streisand/master/logo.jpg" alt="Automate the effect"/>
+</p>
 
 - - -
 [English](README.md), [Français](README-fr.md), [简体中文](README-chs.md), [Русский](README-ru.md) | [Зеркало](https://gitlab.com/alimakki/streisand)
@@ -41,8 +43,6 @@
 Предоставляемые сервисы
 -----------------
 
-* [Monit](https://mmonit.com/monit/)
-  * Отслеживает здоровье процессов и автоматически перезапускает их , если они падают или зависают.
 * [OpenSSH](https://www.openssh.com/)
   * Создается непривилегированный пользователь и пара ключей для [sshuttle](https://github.com/sshuttle/sshuttle) и SOCKS.
   * Поддерживаются также SSH-туннели Windows и Android, создается копия пары ключей в .ppk формате для PuTTY
@@ -79,7 +79,7 @@
 
 Установка
 ------------
-Пожалуйста **внимательно** прочитайте инструкции по установке перед тем, как продолжать.
+Пожалуйста, **внимательно** прочитайте инструкции по установке перед тем, как продолжать.
 
 ### Важное разъяснение ###
 Стрейзанд основан на [Ansible](https://www.ansible.com/), инструменте автоматизации, который обычно используется для установки и настройки файлов и пакетов на удалённых серверах. Стрейзанд автоматически создает **новый удалённый сервер** с пакетами и конфигурационными файлами VPN.
@@ -110,7 +110,7 @@
         sudo apt-get install git
   * На Fedora
 
-        sudo yum install git
+        sudo dnf install git
   * На macOS (с использованием [Homebrew](https://brew.sh/))
 
         brew install git
@@ -120,7 +120,7 @@
         sudo apt-get install python-paramiko python-pip python-pycurl python-dev build-essential
   * На Fedora
 
-        sudo yum install python-pip
+        sudo dnf install python-pip
   * На macOS
 
         sudo easy_install pip
@@ -149,7 +149,7 @@
 
   * Linode
 
-        sudo pip install linode-python
+        sudo pip install linode-api4
   * Rackspace Cloud
 
         sudo pip install pyrax

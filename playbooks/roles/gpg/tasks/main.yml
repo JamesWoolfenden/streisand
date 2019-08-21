@@ -1,15 +1,14 @@
 ---
 - name: "Install GnuPG 2, dirmngr and gpgv2"
   apt:
-    name: "{{ item }}"
-  with_items:
-    - gnupg2
-    - dirmngr
-    - gpgv2
+    package:
+      - gnupg2
+      - dirmngr
+      - gpgv2
 
 - name: "Create the GPG directory"
   file:
-    path: "/root/.gnupg/"
+    path: "{{ root_gpg_dir }}"
     state: directory
     owner: root
     group: root
@@ -31,13 +30,35 @@
     group: root
     mode: 0750
 
-- name: "Write the Streisand GPG dirnmgr config"
+- name: "Write the Streisand GPG dirmngr config"
   template:
     src: "dirmngr.conf.j2"
-    dest: "/root/.gnupg/dirmngr.conf"
+    dest: "{{ root_gpg_dir }}/dirmngr.conf"
     owner: root
     group: root
     mode: 0750
+
+- name: "Ensure a GPG agent is running"
+  command: "gpgconf --launch gpg-agent"
+
+- name: "Reload gpg-agent to pick up configuration changes"
+  command: "gpgconf --reload gpg-agent"
+
+# It turns out that "--reload" doesn't work on dirmngr.
+- name: "Kill any existing dirmngr"
+  command: "gpgconf --kill dirmngr"
+- name: "Start a new dirmngr with our config changes"
+  command: "gpgconf --launch dirmngr"
+
+- name: "Wait for the GPG agent and dirmngr control sockets"
+  wait_for:
+    path: "{{ root_gpg_dir }}/{{ item }}"
+    state: present
+    sleep: 5
+    timeout: 60
+  with_items:
+    - "S.dirmngr"
+    - "S.gpg-agent"
 
 - name: "Create the Streisand GPG keyring"
   command: "gpg2 {{ streisand_default_gpg_flags }} --fingerprint"
